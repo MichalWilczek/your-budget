@@ -36,3 +36,8 @@ Debug/
 *.sln
 *.vcxproj*
 *.vs/*
+
+# Code Blocks files
+*.cbp
+*.depend
+*.layout
