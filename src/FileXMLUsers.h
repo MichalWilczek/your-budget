@@ -5,6 +5,7 @@
 #include <vector>
 #include <fstream>
 
+#include "Markup.h"
 #include "FileXML.h"
 #include "User.h"
 #include "Utils.h"
@@ -12,13 +13,12 @@
 using namespace std;
 
 class FileXMLUsers :public FileXML {
-	User getUser(string lineWithUserData);
 
 public:
 	FileXMLUsers(string FILENAME) : FileXML(FILENAME) {};
-	void addUserToFile(User user);
 	vector <User> readUsersFromFile();
-	void saveUsersToFile(vector <User> users);
+	void addUserToFile(User user);
+	void modifyUserInFile(User user);
 };
 
 #endif

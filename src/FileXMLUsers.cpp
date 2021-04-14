@@ -2,75 +2,97 @@
 
 
 void FileXMLUsers::addUserToFile(User user) {
+    CMarkup xmlUsers;
 
+    // Load the XML file. If the file doesn't exist, create it and add the main headers.
+    bool fileExists = xmlUsers.Load(FILENAME);
+    if (!fileExists) {
+        xmlUsers.SetDoc("<?xml version=\"1.0\" encoding=\"UTF-8\"?>\r\n");
+        xmlUsers.AddElem("Users");
+    }
+
+    // Add User data to the XML file.
+    xmlUsers.FindElem();
+    xmlUsers.IntoElem();
+    xmlUsers.AddElem("User");
+    xmlUsers.IntoElem();
+    xmlUsers.AddElem("UserId", user.getIdUser());
+    xmlUsers.AddElem("FirstName", user.getFirstName());
+    xmlUsers.AddElem("Surname", user.getSurname());
+    xmlUsers.AddElem("Login", user.getLogin());
+    xmlUsers.AddElem("Password", user.getPassword());
+
+    xmlUsers.Save(FILENAME);
 }
 
 vector <User> FileXMLUsers::readUsersFromFile() {
-
     vector <User> users;
+    CMarkup xmlUsers;
 
-    User user;
-    string lineWitUserData = "";
-
-    fstream textFile;
-    textFile.open(FILENAME.c_str(), ios::in);
-
-    if (textFile.good() == true) {
-        while (getline(textFile, lineWitUserData)) {
-            user = getUser(lineWitUserData);
-            users.push_back(user);
-        }
+    // Load the XML file. If the file doesn't exist, return an empty vector.
+    bool fileExists = xmlUsers.Load(FILENAME);
+     if (!fileExists) {
+        return users;
     }
-    textFile.close();
+
+    // Upload each 'User' element from the file and add it to the vector.
+    User user;
+    xmlUsers.FindElem();
+    xmlUsers.IntoElem();
+    while (xmlUsers.FindElem("User")) {
+        xmlUsers.IntoElem();
+
+        xmlUsers.FindElem( "UserId" );
+        user.setIdUser(atoi(MCD_2PCSZ(xmlUsers.GetData())));
+
+        xmlUsers.FindElem( "FirstName" );
+        user.setFirstName(xmlUsers.GetData());
+
+        xmlUsers.FindElem( "Surname" );
+        user.setSurname(xmlUsers.GetData());
+
+        xmlUsers.FindElem( "Login" );
+        user.setLogin(xmlUsers.GetData());
+
+        xmlUsers.FindElem( "Password" );
+        user.setPassword(xmlUsers.GetData());
+
+        xmlUsers.OutOfElem();
+        users.push_back(user);
+    }
+
     return users;
 }
 
-User FileXMLUsers::getUser(string lineWitUserData) {
-    User user;
-    string userDataElement = "";
-    int numberUserDataElement = 1;
+void FileXMLUsers::modifyUserInFile(User user) {
+    CMarkup xmlUsers;
+    int idUser = 0;
+    string password = "";
 
-    for (int signPosition = 0; signPosition < lineWitUserData.length(); signPosition++) {
-        if (lineWitUserData[signPosition] != '|') {
-            userDataElement += lineWitUserData[signPosition];
-        } else {
-            switch (numberUserDataElement) {
-            case 1:
-                user.setIdUser(atoi(userDataElement.c_str()));
-                break;
-            case 2:
-                user.setLogin(userDataElement);
-                break;
-            case 3:
-                user.setPassword(userDataElement);
-                break;
-            }
-            userDataElement = "";
-            numberUserDataElement++;
-        }
+    // Load the XML file. If the file doesn't exist, exit the method.
+    bool fileExists = xmlUsers.Load(FILENAME);
+    if (!fileExists) {
+        return;
     }
-    return user;
-}
 
-void FileXMLUsers::saveUsersToFile(vector <User> users) {
-    fstream textFile;
-    string lineWithUserData = "";
-    vector <User>::iterator itrEnd = --users.end();
+    xmlUsers.FindElem();
+    xmlUsers.IntoElem();
+    while (xmlUsers.FindElem("User")) {
 
-    textFile.open(FILENAME.c_str(), ios::out);
+        xmlUsers.IntoElem();
+        xmlUsers.FindElem( "UserId" );
+        idUser = atoi(MCD_2PCSZ(xmlUsers.GetData()));
 
-    if (textFile.good() == true) {
-        for (vector <User>::iterator itr = users.begin(); itr != users.end(); itr++) {
+        // If the uploaded user id corresponds to the id of the user data, overwrite its password in the file.
+        if (idUser == user.getIdUser()) {
 
-            if (itr == itrEnd) {
-                textFile << lineWithUserData;
-            } else {
-                textFile << lineWithUserData << endl;
+            while (xmlUsers.FindElem("Password")){
+                   if (xmlUsers.RemoveElem()) cout << "hurra!" << endl;
             }
-            lineWithUserData = "";
+            return;
         }
-    } else {
-        cout << "The file: " << FILENAME << " cannot be opened." << endl;
+        xmlUsers.OutOfElem();
     }
-    textFile.close();
+
+    xmlUsers.Save(FILENAME);
 }

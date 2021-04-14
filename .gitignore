@@ -41,3 +41,6 @@ Debug/
 *.cbp
 *.depend
 *.layout
+
+# XML files
+*.xml

@@ -11,7 +11,30 @@
 using namespace std;
 
 class UsersManager {
+
+    // Initial parameters set in the constructor.
+    vector <User> users;
+    int idUserLoggedIn;
+
+    // Other private objects.
+    FileXMLUsers fileXML;
+    User getUserNew();
+    int getUserIdNew();
+    bool doesLoginExist(string login);
+
+    public:
+	UsersManager(string filenameUsers) : fileXML(filenameUsers) {
+		users = fileXML.readUsersFromFile();
+		idUserLoggedIn = 1;
+	};
+
+    void registerUser();
+    void showUsers();
+    void logInUser();
+    void changePasswordLoggedInUser();
+	void logOutUser();
     /*
+
 	int idUserLoggedIn;
 	vector <User> users;
 	FileXMLUsers fileXML;
