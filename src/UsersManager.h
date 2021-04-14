@@ -25,7 +25,7 @@ class UsersManager {
     public:
 	UsersManager(string filenameUsers) : fileXML(filenameUsers) {
 		users = fileXML.readUsersFromFile();
-		idUserLoggedIn = 1;
+		idUserLoggedIn = 0;
 	};
 
     void registerUser();
