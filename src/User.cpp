@@ -1,43 +1,43 @@
-#include "Contact.h"
+#include "User.h"
 
 
-void Contact::setIdUser(int newIdUser) {
+void User::setIdUser(int newIdUser) {
 	if (newIdUser >= 0)
-		idContact = newIdUser;
+		idUser = newIdUser;
 }
 
-void Contact::setFirstName(string newFirstName) {
+void User::setFirstName(string newFirstName) {
 	firstName = Utils::convertFirstLetterIntoCapitalOtherIntoLowercase(newFirstName);
 }
 
-void Contact::setSurname(string newSurname) {
+void User::setSurname(string newSurname) {
 	surname = Utils::convertFirstLetterIntoCapitalOtherIntoLowercase(newSurname);
 }
 
-void Contact::setLogin(string newLogin) {
+void User::setLogin(string newLogin) {
 	login = newLogin;
 }
 
-void Contact::setPassword(string newPassword) {
+void User::setPassword(string newPassword) {
 	password = newPassword;
 }
 
-int Contact::getIdUser() {
-	return idContact;
+int User::getIdUser() {
+	return idUser;
 }
 
-string Contact::getFirstName() {
+string User::getFirstName() {
 	return firstName;
 }
 
-string Contact::getSurname() {
+string User::getSurname() {
 	return surname;
 }
 
-string Contact::getLogin() {
+string User::getLogin() {
 	return login;
 }
 
-string Contact::getPassword() {
+string User::getPassword() {
 	return password;
 }

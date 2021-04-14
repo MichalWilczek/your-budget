@@ -1,5 +1,5 @@
-#ifndef CONTACT_H
-#define CONTACT_H
+#ifndef USER_H
+#define USER_H
 
 #include <iostream>
 #include "Utils.h"
