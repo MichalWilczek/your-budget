@@ -9,7 +9,7 @@ int main() {
 
     UsersManager usersManager("users.xml");
 
-    usersManager.registerUser();
+    //usersManager.registerUser();
     usersManager.showUsers();
     usersManager.logInUser();
     usersManager.changePasswordLoggedInUser();

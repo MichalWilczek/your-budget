@@ -75,8 +75,11 @@ void FileXMLUsers::modifyUserInFile(User user) {
         return;
     }
 
+    // Dig into the 'User' elements.
     xmlUsers.FindElem();
     xmlUsers.IntoElem();
+
+    // Iterate over all user IDs to find the logged in one.
     while (xmlUsers.FindElem("User")) {
 
         xmlUsers.IntoElem();
@@ -85,14 +88,14 @@ void FileXMLUsers::modifyUserInFile(User user) {
 
         // If the uploaded user id corresponds to the id of the user data, overwrite its password in the file.
         if (idUser == user.getIdUser()) {
-
             while (xmlUsers.FindElem("Password")){
-                   if (xmlUsers.RemoveElem()) cout << "hurra!" << endl;
+                   if (xmlUsers.RemoveElem()) {
+                        xmlUsers.AddElem("Password", user.getPassword());
+                        xmlUsers.Save(FILENAME);
+                        return;
+                   }
             }
-            return;
         }
         xmlUsers.OutOfElem();
     }
-
-    xmlUsers.Save(FILENAME);
 }
