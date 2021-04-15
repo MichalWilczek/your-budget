@@ -12,10 +12,10 @@
 
 using namespace std;
 
-class FileXMLUsers :public FileXML {
+class FileXMLUsers :public File {
 
 public:
-	FileXMLUsers(string FILENAME) : FileXML(FILENAME) {};
+	FileXMLUsers(string FILENAME) : File(FILENAME) {};
 	vector <User> readUsersFromFile();
 	void addUserToFile(User user);
 	void modifyUserInFile(User user);
