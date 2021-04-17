@@ -26,7 +26,7 @@ void Budget::logOutUser() {
 	addressesManager = NULL;*/
 }
 
-void Budget::run() {
+void Budget::runConsole() {
     char choice = { 0 };
 
     while (true) {

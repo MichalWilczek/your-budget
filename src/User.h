@@ -22,12 +22,14 @@ public:
 		this->password = password;
 	}
 
+	//Container setters.
 	void setIdUser(int newIdUser);
 	void setFirstName(string newFirstName);
 	void setSurname(string newSurname);
 	void setLogin(string newLogin);
 	void setPassword(string newPassword);
 
+	// Container getters.
 	int getIdUser();
 	string getFirstName();
 	string getSurname();

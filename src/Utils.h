@@ -9,6 +9,7 @@
 using namespace std;
 
 class Utils {
+
 public:
 	static string convertIntIntoString(int number);
 	static int convertStringIntoInt(string number);

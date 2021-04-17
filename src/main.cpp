@@ -8,7 +8,7 @@ using namespace std;
 int main() {
 
     Budget budget("users.xml");
-    budget.run();
+    budget.runConsole();
     return 0;
 }
 
