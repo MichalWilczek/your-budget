@@ -18,7 +18,7 @@ class FileTransactionsXML :public File {
 
 public:
 	FileTransactionsXML(string FILENAME) : File(FILENAME) {
-		idUserLastInFile = 0;
+		idTransactionLastInFile = 0;
 	};
 	vector <Transaction> readTransactionsFromFile(int idUserLoggedIn);
 	void addTransactionToFile(Transaction transaction);

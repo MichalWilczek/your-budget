@@ -27,7 +27,7 @@ public:
 	    fileTransactions(filenameTransactions), ID_USER_LOGGED_IN(idUserLoggedIn) {
 		transactions = fileTransactions.readTransactionsFromFile(ID_USER_LOGGED_IN);
 	};
-	void addTransaction(int newIdUser=0, int newIdTransaction=0);
+	void addTransaction();
 
 	/*void editContact();
 	void showContactsOfLoggedInUser();

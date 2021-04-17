@@ -1,12 +1,11 @@
 #include "TransactonsManager.h"
 
 
-void TransactionsManager::addTransaction(int newIdUser) {
+void TransactionsManager::addTransaction() {
 
     // Upload the transaction data.
-    system("cls");
-    cout << " >>> ADDING TRANSACTION <<<" << endl << endl;
     int idTransaction = fileTransactions.getIdTransactionLastInFile();
+    int newIdTransaction = idTransaction + 1;
 
     cout << "Give value: ";
     double value = Utils::convertStringIntoDouble(Utils::readLine());
@@ -18,7 +17,7 @@ void TransactionsManager::addTransaction(int newIdUser) {
     string issueDate = Utils::readLine();
 
     // Instantiate the Transaction object, push it to the vector and add it to the file.
-    Transaction transaction(newIdUser, idTransaction, value, name, issueDate);
+    Transaction transaction(ID_USER_LOGGED_IN, newIdTransaction, value, name, issueDate);
     transactions.push_back(transaction);
     fileTransactions.addTransactionToFile(transaction);
 }

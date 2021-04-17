@@ -11,9 +11,27 @@ void Budget::showUsers() {
 
 void Budget::logInUser() {
 	usersManager.logInUser();
-	/*if (usersManager.isUserLoggedIn()) {
-		addressesManager = new ContactsManager(TEXTFILE_CONTACTS, usersManager.getIdUserLoggedIn());
-	}*/
+    if (usersManager.isUserLoggedIn()) {
+		budgetManager = new BudgetManager(FILENAME_INCOME, FILENAME_EXPENSES, usersManager.getIdUserLoggedIn());
+	}
+}
+
+void Budget::addIncome() {
+    if (usersManager.isUserLoggedIn()) {
+		budgetManager->addIncome();
+	} else {
+		cout << "Log in first to add income." << endl;
+		system("pause");
+	}
+}
+
+void Budget::addExpense() {
+    if (usersManager.isUserLoggedIn()) {
+		budgetManager->addExpense();
+	} else {
+		cout << "Log in first to add expense." << endl;
+		system("pause");
+	}
 }
 
 void Budget::changePasswordLoggedInUser() {
@@ -22,8 +40,8 @@ void Budget::changePasswordLoggedInUser() {
 
 void Budget::logOutUser() {
 	usersManager.logOutUser();
-	/*delete addressesManager;
-	addressesManager = NULL;*/
+	delete budgetManager;
+	budgetManager = NULL;
 }
 
 void Budget::runConsole() {
@@ -52,13 +70,13 @@ void Budget::runConsole() {
             choice = chooseOptionUserMenu();
 
             switch (choice) {
-            /*case '1':
-                addContact();
+            case '1':
+                addIncome();
                 break;
             case '2':
-                searchContactByFirstName();
+                addExpense();
                 break;
-            case '3':
+            /*case '3':
                 searchContactBySurname();
                 break;
             case '4':
@@ -103,9 +121,9 @@ char Budget::chooseOptionUserMenu() {
     system("cls");
     cout << " >>> USER MENU <<<" << endl;
     cout << "---------------------------" << endl;
-   /* cout << "1. Add contact" << endl;
-    cout << "2. Search contact by first name" << endl;
-    cout << "3. Search contact by surname" << endl;
+   cout << "1. Add income" << endl;
+    cout << "2. Add expense" << endl;
+    /* cout << "3. Search contact by surname" << endl;
     cout << "4. Show contacts" << endl;
     cout << "5. Delete contact" << endl;
     cout << "6. Edit contact" << endl;
