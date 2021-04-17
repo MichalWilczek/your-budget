@@ -13,49 +13,29 @@ using namespace std;
 class UsersManager {
 
     // Initial parameters set in the constructor.
-    vector <User> users;
     int idUserLoggedIn;
+    vector <User> users;
 
     // Other private objects.
-    FileUsersXML fileXML;
+    FileUsersXML fileUsersXML;
     User getUserNew();
     int getUserIdNew();
     bool doesLoginExist(string login);
 
+    // Public interface.
     public:
-	UsersManager(string filenameUsers) : fileXML(filenameUsers) {
-		users = fileXML.readUsersFromFile();
+	UsersManager(string filenameUsers) : fileUsersXML(filenameUsers) {
+		users = fileUsersXML.readUsersFromFile();
 		idUserLoggedIn = 0;
 	};
 
+	bool isUserLoggedIn();
     void registerUser();
     void showUsers();
     void logInUser();
     void changePasswordLoggedInUser();
 	void logOutUser();
-    /*
 
-	int idUserLoggedIn;
-	vector <User> users;
-	FileXMLUsers fileXML;
-
-	User getUserNew();
-	int getUserIdNew();
-	bool doesLoginExist(string login);
-
-public:
-	UsersManager(string filenameUsers) : fileXML(filenameUsers) {
-		users = fileXML.readUsersFromFile();
-		idUserLoggedIn = 0;
-	};
-	bool isUserLoggedIn();
-	int getIdUserLoggedIn();
-	void showUsers();
-	void registerUser();
-	void logInUser();
-	void changePasswordLoggedInUser();
-	void logOutUser();
-	*/
 };
 
 #endif

@@ -1,19 +1,14 @@
 #include <iostream>
 #include "Markup.h"
-#include "UsersManager.h"
+#include "Budget.h"
 
 using namespace std;
 
 
 int main() {
 
-    UsersManager usersManager("users.xml");
-
-    //usersManager.registerUser();
-    usersManager.showUsers();
-    usersManager.logInUser();
-    usersManager.changePasswordLoggedInUser();
-
+    Budget budget("users.xml");
+    budget.run();
     return 0;
 }
 
