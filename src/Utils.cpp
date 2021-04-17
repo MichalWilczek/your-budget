@@ -43,11 +43,15 @@ int Utils::convertStringIntoInt(string number) {
     return Integer;
 }
 
+double Utils::convertStringIntoDouble(string number) {
+    return stod(number);
+}
+
 char Utils::readSign() {
     string line = "";
     char sign = { 0 };
 
-    while (true) { 
+    while (true) {
         getline(cin, line);
 
         if (line.length() == 1) {

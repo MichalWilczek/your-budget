@@ -14,10 +14,15 @@ using namespace std;
 
 class FileTransactionsXML :public File {
 
+	int idTransactionLastInFile;
+
 public:
-	FileTransactionsXML(string FILENAME) : File(FILENAME) {};
+	FileTransactionsXML(string FILENAME) : File(FILENAME) {
+		idUserLastInFile = 0;
+	};
 	vector <Transaction> readTransactionsFromFile(int idUserLoggedIn);
 	void addTransactionToFile(Transaction transaction);
+	int getIdTransactionLastInFile();
 	//void modifyUserInFile(User user);
 };
 
