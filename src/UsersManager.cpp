@@ -49,6 +49,11 @@ bool UsersManager::isUserLoggedIn() {
     else return false;
 }
 
+int UsersManager::getIdUserLoggedIn() {
+    if (isUserLoggedIn()) return idUserLoggedIn;
+    else throw invalid_argument("No user is logged in.");
+}
+
 void UsersManager::registerUser() {
     User uzytkownik = getUserNew();
 

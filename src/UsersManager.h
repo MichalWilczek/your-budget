@@ -29,6 +29,7 @@ public:
 		idUserLoggedIn = 0;
 	};
 	bool isUserLoggedIn();
+	int getIdUserLoggedIn();
     void registerUser();
     void showUsers();
     void logInUser();
