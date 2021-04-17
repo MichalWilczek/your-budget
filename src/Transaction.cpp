@@ -11,7 +11,7 @@ void Transaction::setIdTransaction(int newIdTransaction) {
 		idTransaction = newIdTransaction;
 }
 
-void Transaction::setValue(float newValue) {
+void Transaction::setValue(double newValue) {
     if (newValue > 0)
 		value = newValue;
 }
@@ -32,7 +32,7 @@ int Transaction::getIdTransaction() {
 	return idTransaction;
 }
 
-float Transaction::getValue() {
+double Transaction::getValue() {
 	return value;
 }
 
