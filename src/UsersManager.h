@@ -5,7 +5,7 @@
 #include <vector>
 #include <windows.h>
 #include "User.h"
-#include "FileXMLUsers.h"
+#include "FileUsersXML.h"
 #include "Utils.h"
 
 using namespace std;
@@ -17,7 +17,7 @@ class UsersManager {
     int idUserLoggedIn;
 
     // Other private objects.
-    FileXMLUsers fileXML;
+    FileUsersXML fileXML;
     User getUserNew();
     int getUserIdNew();
     bool doesLoginExist(string login);

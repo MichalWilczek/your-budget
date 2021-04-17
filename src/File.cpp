@@ -1,8 +1,8 @@
 #include "File.h"
 
-bool File::isFileEmpty(fstream& textFile) {
-    textFile.seekg(0, ios::end);
-    if (textFile.tellg() == 0)
+bool File::isFileEmpty(fstream& file) {
+    file.seekg(0, ios::end);
+    if (file.tellg() == 0)
         return true;
     else
         return false;
@@ -19,5 +19,5 @@ void File::changeFilename(string oldName, string newName)
 {
     if (rename(oldName.c_str(), newName.c_str()) == 0) {}
     else
-        cout << "Cannot change file name. The name current name is: " << oldName << endl;
+        cout << "Cannot change the file name. The current name is: " << oldName << endl;
 }

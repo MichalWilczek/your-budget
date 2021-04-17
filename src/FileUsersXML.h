@@ -1,21 +1,21 @@
-#ifndef FILEXMLUSERS_h
-#define TEXTFILEUSERS_h
+#ifndef FILEUSERSXML_h
+#define FILEUSERSXML_h
 
 #include <iostream>
 #include <vector>
 #include <fstream>
 
 #include "Markup.h"
-#include "FileXML.h"
+#include "File.h"
 #include "User.h"
 #include "Utils.h"
 
 using namespace std;
 
-class FileXMLUsers :public File {
+class FileUsersXML :public File {
 
 public:
-	FileXMLUsers(string FILENAME) : File(FILENAME) {};
+	FileUsersXML(string FILENAME) : File(FILENAME) {};
 	vector <User> readUsersFromFile();
 	void addUserToFile(User user);
 	void modifyUserInFile(User user);
