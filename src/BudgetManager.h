@@ -12,14 +12,6 @@ class BudgetManager {
 	TransactionsManager incomeManager;
 	TransactionsManager expensesManager;
 
-	/*
-	void showContact(Contact contact);
-	Contact setNewContact(int idUserLoggedIn);
-	int getIdContactFromClient();
-	static void showAmountOfFoundContacts(int amountContacts);
-	char chooseOptionEditionMenu();
-    */
-
 public:
 	BudgetManager(string filenameIncome, string filenameExpenses, int idUserLoggedIn):
 	    incomeManager(filenameIncome, idUserLoggedIn),
@@ -28,11 +20,6 @@ public:
     void addIncome();
     void addExpense();
 
-	/*void editContact();
-	void showContactsOfLoggedInUser();
-	void searchContactByFirstName();
-	void searchContactBySurname();
-	*/
 };
 
 #endif
