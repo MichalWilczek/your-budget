@@ -74,6 +74,7 @@ bool DateEditor::isYearCorrect() {
     if (!isYearCorrect)
         return isYearCorrect;
 
+    // Add zeros to the year if it has less than 4 digits.
     for (int i=yearLength; i<4; i++) {
         year = "0" + year;
     }
