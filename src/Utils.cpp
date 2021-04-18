@@ -79,3 +79,23 @@ int Utils::readInteger() {
     }
     return number;
 }
+
+vector<string> Utils::splitString(string inputString, string delimitersNew) {
+
+    vector<string> wordElements;
+    stringstream stringStream(inputString);
+    string line;
+    while(getline(stringStream, line))
+    {
+        size_t prev = 0, pos;
+        while ((pos = line.find_first_of(delimitersNew, prev)) != string::npos)
+        {
+            if (pos > prev)
+                wordElements.push_back(line.substr(prev, pos-prev));
+            prev = pos+1;
+        }
+        if (prev < line.length())
+            wordElements.push_back(line.substr(prev, string::npos));
+    }
+    return wordElements;
+}
