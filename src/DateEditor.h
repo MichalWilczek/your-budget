@@ -12,11 +12,28 @@ using namespace std;
 
 class DateEditor {
 
+    string year;
+    string month;
+    string day;
+
+    void setCurrentDate();
+    void uploadDateFromConsole();
+    bool isYearCorrect();
+    bool isMonthCorrect();
+    bool isDayCorrect();
+    bool isLeapYear();
+    int getNumberOfDaysInMonth();
+
 // Public interface.
 public:
-   static int getCurrentDate();
-   static void uploadDateFromConsole();
-   static bool isLeapYear(int year);
+    DateEditor(bool currentDate=true) {
+        if (currentDate)
+            setCurrentDate();
+        else
+            uploadDateFromConsole();
+    }
+    int getDateInteger();
+    string getDateString();
 };
 
 #endif
