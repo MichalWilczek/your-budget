@@ -1,6 +1,5 @@
 #include <iostream>
 
-/*
 #include "Markup.h"
 #include "Budget.h"
 
@@ -13,9 +12,9 @@ int main() {
     budget.runConsole();
     return 0;
 }
-*/
 
 
+/*
 #include "DateEditor.h"
 
 using namespace std;
@@ -39,6 +38,6 @@ int main() {
             cout << DateEditor::getNumberOfDaysInMonth(9) << endl;
             cout << DateEditor::getNumberOfDaysInMonth(10) << endl;
             cout << DateEditor::getNumberOfDaysInMonth(11) << endl;
-            cout << DateEditor::getNumberOfDaysInMonth(12) << endl;*/
+            cout << DateEditor::getNumberOfDaysInMonth(12) << endl;
 
-}
+}*/

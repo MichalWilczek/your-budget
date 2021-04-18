@@ -59,7 +59,7 @@ char Utils::readSign() {
             break;
         } else {
             if (line != "")
-                cout << "To nie jest pojedynczy znak. Wpisz ponownie." << endl;
+                cout << "It's not a single sign. Type in again." << endl;
         }
     }
     return sign;

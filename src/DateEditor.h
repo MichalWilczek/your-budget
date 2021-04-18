@@ -32,6 +32,9 @@ public:
         else
             uploadDateFromConsole();
     }
+    /*DateEditor(string date="") {
+        // TODO: add logic converting the date into year, month, and day.
+    }*/
     int getDateInteger();
     string getDateString();
 };
