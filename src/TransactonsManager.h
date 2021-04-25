@@ -6,6 +6,7 @@
 
 #include "Transaction.h"
 #include "FileTransactionsXML.h"
+#include "DateEditor.h"
 
 using namespace std;
 

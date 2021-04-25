@@ -18,7 +18,7 @@ void FileTransactionsXML::addTransactionToFile(Transaction transaction) {
     xmlFile.IntoElem();
     xmlFile.AddElem("IdUser", transaction.getIdUser());
     xmlFile.AddElem("IdTransaction", transaction.getIdTransaction());
-    xmlFile.AddElem("Value", transaction.getValue());
+    xmlFile.AddElem("Value", Utils::convertDoubleIntoString(transaction.getValue()));
     xmlFile.AddElem("Name", transaction.getName());
     xmlFile.AddElem("IssueDate", transaction.getIssueDate());
     xmlFile.Save(FILENAME);
@@ -62,7 +62,7 @@ vector <Transaction> FileTransactionsXML::readTransactionsFromFile(int idUserLog
             transaction.setName(xmlFile.GetData());
 
             xmlFile.FindElem("IssueDate");
-            transaction.setIssueDate(xmlFile.GetData());
+            transaction.setIssueDate(atoi(MCD_2PCSZ((xmlFile.GetData()))));
         }
         xmlFile.OutOfElem();
         transactions.push_back(transaction);
