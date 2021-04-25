@@ -20,7 +20,7 @@ void Transaction::setName(string newName) {
 	name = newName;
 }
 
-void Transaction::setIssueDate(string newIssueDate) {
+void Transaction::setIssueDate(int newIssueDate) {
 	issueDate = newIssueDate;
 }
 
@@ -40,6 +40,6 @@ string Transaction::getName() {
 	return name;
 }
 
-string Transaction::getIssueDate() {
+int Transaction::getIssueDate() {
 	return issueDate;
 }

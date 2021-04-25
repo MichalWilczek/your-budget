@@ -8,6 +8,13 @@ string Utils::convertIntIntoString(int number) {
     return str;
 }
 
+string Utils::convertDoubleIntoString(double number) {
+    ostringstream ss;
+    ss << number;
+    string str = ss.str();
+    return str;
+}
+
 string Utils::readLine() {
     string line = "";
     getline(cin, line);
@@ -19,6 +26,15 @@ string Utils::convertFirstLetterIntoCapitalOtherIntoLowercase(string text) {
     {
         transform(text.begin(), text.end(), text.begin(), ::tolower);
         text[0] = toupper(text[0]);
+    }
+
+    return string(text);
+}
+
+string Utils::convertCommasToDots(string text) {
+    if (!text.empty())
+    {
+        replace(text.begin(), text.end(), ',', '.');
     }
 
     return string(text);

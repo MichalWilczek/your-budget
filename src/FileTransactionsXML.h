@@ -23,7 +23,6 @@ public:
 	vector <Transaction> readTransactionsFromFile(int idUserLoggedIn);
 	void addTransactionToFile(Transaction transaction);
 	int getIdTransactionLastInFile();
-	//void modifyUserInFile(User user);
 };
 
 #endif

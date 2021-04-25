@@ -8,7 +8,9 @@ void TransactionsManager::addTransaction() {
     int newIdTransaction = idTransaction + 1;
 
     cout << "Give value: ";
-    double value = Utils::convertStringIntoDouble(Utils::readLine());
+    string valueString = Utils::readLine();
+    valueString = Utils::convertCommasToDots(valueString);
+    double value = Utils::convertStringIntoDouble(valueString);
 
     cout << "Give name: ";
     string name = Utils::readLine();
@@ -34,7 +36,7 @@ void TransactionsManager::addTransaction() {
         }
     }
     DateEditor dateEditor(currentDate);
-    string issueDate = dateEditor.getDateString();
+    int issueDate = dateEditor.getDateInteger();
 
     // Instantiate the Transaction object, push it to the vector and add it to the file.
     Transaction transaction(ID_USER_LOGGED_IN, newIdTransaction, value, name, issueDate);
