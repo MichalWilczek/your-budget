@@ -1,6 +1,20 @@
 #include "TransactonsManager.h"
 
 
+bool TransactionsManager::areTransactionsAvailable() {
+    if (transactions.size() > 0)
+        return true;
+    return false;
+}
+
+double TransactionsManager::getTransactionsSummedValue() {
+    double sum=0;
+    for (int i=0; i<transactions.size(); i++) {
+        sum += transactions[i].getValue();
+    }
+    return sum;
+}
+
 void TransactionsManager::addTransaction() {
 
     // Upload the transaction data.
@@ -36,10 +50,37 @@ void TransactionsManager::addTransaction() {
         }
     }
     DateEditor dateEditor(currentDate);
-    int issueDate = dateEditor.getDateInteger();
+    string issueDate = dateEditor.getDateString();
 
     // Instantiate the Transaction object, push it to the vector and add it to the file.
     Transaction transaction(ID_USER_LOGGED_IN, newIdTransaction, value, name, issueDate);
     transactions.push_back(transaction);
     fileTransactions.addTransactionToFile(transaction);
+}
+
+void TransactionsManager::showTransactions(string startIssueDate, string endIssueDate) {
+
+    /*sort( values.begin( ), values.end( ), [ ]( const MyStruct& lhs, const MyStruct& rhs )
+    {
+       return lhs.key < rhs.key;
+    }*/
+
+    DateEditor dateEditorStartIssueDate(startIssueDate);
+    DateEditor dateEditorEndIssueDate(endIssueDate);
+
+    int startIssueDateInteger = dateEditorStartIssueDate.getDateInteger();
+    int endIssueDateInteger = dateEditorEndIssueDate.getDateInteger();
+
+    for (int i=0; i<transactions.size(); i++) {
+
+        transactions[i].showTransaction();
+
+        /*string issueDate = transactions[i].getIssueDate();
+
+        DateEditor dateEditorIssueDate(issueDate);
+        int issueDateInteger = dateEditorIssueDate.getDateInteger();
+
+        if (startIssueDateInteger <= issueDateInteger && endIssueDateInteger >= issueDateInteger)
+            transactions[i].showTransaction();*/
+    }
 }

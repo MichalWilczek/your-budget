@@ -7,7 +7,7 @@ int DateEditor::getDateInteger() {
 }
 
 string DateEditor::getDateString() {
-    string date= year + "." + month + "." + day + ".";
+    string date= year + "-" + month + "-" + day;
     return date;
 }
 
@@ -26,6 +26,47 @@ void DateEditor::setCurrentDate() {
     if (month.length() == 1) month = "0" + month;
     if (month.length() != 2)  throw invalid_argument("Month should consist of two two digits.");
 }
+
+void DateEditor::uploadDate(string date) {
+    vector <string> dateElements = Utils::splitString(date, ",._-");
+
+    if (dateElements.size() != 3)
+        throw invalid_argument ("The date should consist of three numbers: year, month, and day.");
+
+    year = dateElements[0];
+    month = dateElements[1];
+    day = dateElements[2];
+
+    if (!isYearCorrect())
+        throw invalid_argument(year);
+
+    if (!isMonthCorrect())
+        throw invalid_argument(month);
+
+    if (!isDayCorrect())
+        throw invalid_argument(day);
+}
+
+string DateEditor::getDateStringFirstDayOfMonth() {
+    return year + "-" + month + "-" + "01";
+}
+
+/*
+string DateEditor::getPreviousMonthFirstDayDate() {
+    int monthInteger = Utils::convertStringIntoInt(month);
+
+    if (monthInteger > 1) {
+        int newMonthInteger = monthInteger  - 1;
+        string newMonthString = Utils::convertIntIntoString(newMonthInteger);
+        string newDate = year + "-" + newMonthString + "-" + day;
+        DateEditor dateEditor(date);
+        return dateEditor;
+    }
+
+    month = "12"
+    int yearInteger
+
+}*/
 
 void DateEditor::uploadDateFromConsole() {
 

@@ -34,6 +34,15 @@ void Budget::addExpense() {
 	}
 }
 
+void Budget::showBalanceFromCurrentMonth() {
+    if (usersManager.isUserLoggedIn()) {
+		budgetManager->showBalanceFromCurrentMonth();
+	} else {
+		cout << "Log in first to show balance." << endl;
+		system("pause");
+	}
+}
+
 void Budget::changePasswordLoggedInUser() {
 	usersManager.changePasswordLoggedInUser();
 }
@@ -76,10 +85,10 @@ void Budget::runConsole() {
             case '2':
                 addExpense();
                 break;
-            /*case '3':
-                searchContactBySurname();
+            case '3':
+                showBalanceFromCurrentMonth();
                 break;
-            case '4':
+            /*case '4':
                 showContactsOfLoggedInUser();
                 break;
             case '5':
@@ -123,7 +132,8 @@ char Budget::chooseOptionUserMenu() {
     cout << "---------------------------" << endl;
    cout << "1. Add income" << endl;
     cout << "2. Add expense" << endl;
-    /* cout << "3. Search contact by surname" << endl;
+    cout << "3. Show balance from current month" << endl;
+    /*
     cout << "4. Show contacts" << endl;
     cout << "5. Delete contact" << endl;
     cout << "6. Edit contact" << endl;

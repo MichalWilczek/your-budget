@@ -5,6 +5,7 @@
 #include <vector>
 
 #include "TransactonsManager.h"
+#include "DateEditor.h"
 
 using namespace std;
 
@@ -19,6 +20,7 @@ public:
 
     void addIncome();
     void addExpense();
+    void showBalanceFromCurrentMonth();
 
 };
 

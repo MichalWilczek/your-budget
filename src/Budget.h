@@ -33,6 +33,7 @@ public:
 	void logInUser();
 	void addIncome();
 	void addExpense();
+	void showBalanceFromCurrentMonth();
 	void changePasswordLoggedInUser();
 	void logOutUser();
 	void runConsole();

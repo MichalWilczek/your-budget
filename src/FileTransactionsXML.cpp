@@ -39,18 +39,19 @@ vector <Transaction> FileTransactionsXML::readTransactionsFromFile(int idUserLog
     }
 
     // Upload each 'Transaction' element from the file and add it to the vector.
-    Transaction transaction;
-    xmlFile.FindElem();
+    xmlFile.FindElem("Transactions");
     xmlFile.IntoElem();
     while (xmlFile.FindElem("Transaction")) {
         xmlFile.IntoElem();
-
-        xmlFile.FindElem("IdTransaction");
-        int idTransaction = atoi(MCD_2PCSZ(xmlFile.GetData()));
+        Transaction transaction;
 
         // Read transactions that only belong to the logged in user.
         xmlFile.FindElem( "IdUser" );
         int idUser = atoi(MCD_2PCSZ(xmlFile.GetData()));
+
+        xmlFile.FindElem("IdTransaction");
+        int idTransaction = atoi(MCD_2PCSZ(xmlFile.GetData()));
+
         if (idUser == idUserLoggedIn) {
             transaction.setIdUser(idUser);
             transaction.setIdTransaction(idTransaction);
@@ -62,7 +63,7 @@ vector <Transaction> FileTransactionsXML::readTransactionsFromFile(int idUserLog
             transaction.setName(xmlFile.GetData());
 
             xmlFile.FindElem("IssueDate");
-            transaction.setIssueDate(atoi(MCD_2PCSZ((xmlFile.GetData()))));
+            transaction.setIssueDate((xmlFile.GetData()));
         }
         xmlFile.OutOfElem();
         transactions.push_back(transaction);

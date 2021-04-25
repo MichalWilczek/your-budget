@@ -3,6 +3,7 @@
 
 #include <iostream>
 #include <vector>
+#include <algorithm>
 
 #include "Transaction.h"
 #include "FileTransactionsXML.h"
@@ -20,7 +21,10 @@ public:
 	    fileTransactions(filenameTransactions), ID_USER_LOGGED_IN(idUserLoggedIn) {
 		transactions = fileTransactions.readTransactionsFromFile(ID_USER_LOGGED_IN);
 	};
+	bool areTransactionsAvailable();
+	double getTransactionsSummedValue();
 	void addTransaction();
+	void showTransactions(string startingIssueDate, string endIssueDate);
 };
 
 #endif
