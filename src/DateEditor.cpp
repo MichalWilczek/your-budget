@@ -53,22 +53,32 @@ string DateEditor::getDateStringFirstDayOfMonth() {
     return year + "-" + month + "-" + "01";
 }
 
-/*
-string DateEditor::getPreviousMonthFirstDayDate() {
+string DateEditor::getDateStringLastDayOfMonth() {
+    return year + "-" + month + "-" + Utils::convertIntIntoString(getNumberOfDaysInMonth());
+}
+
+string DateEditor::getDateStringFirstDayOfPreviousMonth() {
+
+    int yearInteger = Utils::convertStringIntoInt(year);
     int monthInteger = Utils::convertStringIntoInt(month);
 
-    if (monthInteger > 1) {
-        int newMonthInteger = monthInteger  - 1;
-        string newMonthString = Utils::convertIntIntoString(newMonthInteger);
-        string newDate = year + "-" + newMonthString + "-" + day;
-        DateEditor dateEditor(date);
-        return dateEditor;
+    // Check if going one month backwards does not switch one year.
+    if (monthInteger == 1) {
+        string newMonthString = "12";
+        string newYearString = Utils::convertIntIntoString(yearInteger - 1);
+        for (int i=newYearString.length(); i<4; i++) {
+            newYearString = "0" + newYearString;
+        }
+        return newYearString + "-" + newMonthString + "-" + "01";
     }
 
-    month = "12"
-    int yearInteger
-
-}*/
+    // Apply all other cases.
+    int newMonthInteger = monthInteger - 1;
+    string newMonthString = Utils::convertIntIntoString(newMonthInteger);
+    if (newMonthString.length() == 1)
+        newMonthString = "0" + newMonthString;
+    return year + "-" + newMonthString + "-" + "01";
+}
 
 void DateEditor::uploadDateFromConsole() {
 

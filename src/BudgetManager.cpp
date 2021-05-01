@@ -1,5 +1,30 @@
 #include "BudgetManager.h"
 
+void BudgetManager::showBalance(string startDate, string endDate) {
+
+    double totalIncome = 0;
+    double totalExpenses = 0;
+    system("cls");
+
+    if (incomeManager.areTransactionsAvailable()) {
+        cout << " >>> INCOME <<<" << endl << endl;
+        incomeManager.showTransactions(startDate, endDate);
+        totalIncome = incomeManager.getTransactionsSummedValue(startDate, endDate);
+    }
+
+    if (expensesManager.areTransactionsAvailable()) {
+        cout << endl << " >>> EXPENSES <<<" << endl << endl;
+        expensesManager.showTransactions(startDate, endDate);
+        totalExpenses = expensesManager.getTransactionsSummedValue(startDate, endDate);
+    }
+
+    cout << endl << "---------------------" << endl;
+    cout << "Total income = " << totalIncome << endl;
+    cout << "Total expenses = " << totalExpenses << endl;
+    cout << "---------------------" << endl;
+    cout << "Total balance = " << totalIncome - totalExpenses << endl << endl;
+    system("pause");
+}
 
 void BudgetManager::addIncome() {
     system("cls");
@@ -18,31 +43,33 @@ void BudgetManager::addExpense() {
 }
 
 void BudgetManager::showBalanceFromCurrentMonth() {
-    double totalIncome = 0;
-    double totalExpenses = 0;
-
-    system("cls");
     DateEditor dateEditor;
     string currentDate = dateEditor.getDateString();
     string firstDayOfMonthDate = dateEditor.getDateStringFirstDayOfMonth();
 
-    if (incomeManager.areTransactionsAvailable()) {
-        cout << " >>> INCOME <<<" << endl << endl;
-        incomeManager.showTransactions(firstDayOfMonthDate, currentDate);
-        totalIncome = incomeManager.getTransactionsSummedValue();
-    }
+    showBalance(firstDayOfMonthDate, currentDate);
+}
 
-    if (expensesManager.areTransactionsAvailable()) {
-        cout << endl << " >>> EXPENSES <<<" << endl << endl;
-        expensesManager.showTransactions(firstDayOfMonthDate, currentDate);
-        totalExpenses = expensesManager.getTransactionsSummedValue();
-    }
+void BudgetManager::showBalanceFromPreviousMonth() {
+    DateEditor dateEditorCurrentDate;
+    string firstDayOfPreviousMonthDate = dateEditorCurrentDate.getDateStringFirstDayOfPreviousMonth();
 
-    cout << endl << "---------------------" << endl;
-    cout << "Total income = " << totalIncome << endl;
-    cout << "Total expenses = " << totalExpenses << endl;
-    cout << "---------------------" << endl;
-    cout << "Total balance = " << totalIncome - totalExpenses << endl << endl;
+    DateEditor lastMonthDate(firstDayOfPreviousMonthDate);
+    string lastDayOfPreviousMonthDate = lastMonthDate.getDateStringLastDayOfMonth();
 
-    system("pause");
+    showBalance(firstDayOfPreviousMonthDate, lastDayOfPreviousMonthDate);
+}
+
+void BudgetManager::showBalanceFromChosenPeriod() {
+    system("cls");
+
+    cout << ">>> START DATE <<<" << endl;
+    DateEditor dateEditorStartDate(false);
+    string startDate = dateEditorStartDate.getDateString();
+
+    cout << endl << ">>> END DATE <<<" << endl;
+    DateEditor dateEditorEndDate(false);
+    string endDate = dateEditorEndDate.getDateString();
+
+    showBalance(startDate, endDate);
 }

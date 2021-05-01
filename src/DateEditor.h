@@ -41,7 +41,8 @@ public:
     int getDateInteger();
     string getDateString();
     string getDateStringFirstDayOfMonth();
-    //DateEditor getPreviousMonthDate();
+    string getDateStringLastDayOfMonth();
+    string getDateStringFirstDayOfPreviousMonth();
 };
 
 #endif

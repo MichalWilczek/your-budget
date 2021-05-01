@@ -22,9 +22,9 @@ public:
 		transactions = fileTransactions.readTransactionsFromFile(ID_USER_LOGGED_IN);
 	};
 	bool areTransactionsAvailable();
-	double getTransactionsSummedValue();
 	void addTransaction();
 	void showTransactions(string startingIssueDate, string endIssueDate);
+	double getTransactionsSummedValue(string startingIssueDate, string endIssueDate);
 };
 
 #endif

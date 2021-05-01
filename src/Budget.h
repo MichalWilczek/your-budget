@@ -34,6 +34,8 @@ public:
 	void addIncome();
 	void addExpense();
 	void showBalanceFromCurrentMonth();
+	void showBalanceFromPreviousMonth();
+	void showBalanceFromChosenPeriod();
 	void changePasswordLoggedInUser();
 	void logOutUser();
 	void runConsole();

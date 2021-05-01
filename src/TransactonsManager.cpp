@@ -7,10 +7,22 @@ bool TransactionsManager::areTransactionsAvailable() {
     return false;
 }
 
-double TransactionsManager::getTransactionsSummedValue() {
+double TransactionsManager::getTransactionsSummedValue(string startIssueDate, string endIssueDate) {
     double sum=0;
+    DateEditor dateEditorStartIssueDate(startIssueDate);
+    DateEditor dateEditorEndIssueDate(endIssueDate);
+
+    int startIssueDateInteger = dateEditorStartIssueDate.getDateInteger();
+    int endIssueDateInteger = dateEditorEndIssueDate.getDateInteger();
+
     for (int i=0; i<transactions.size(); i++) {
-        sum += transactions[i].getValue();
+        string issueDate = transactions[i].getIssueDate();
+
+        DateEditor dateEditorIssueDate(issueDate);
+        int issueDateInteger = dateEditorIssueDate.getDateInteger();
+
+        if (startIssueDateInteger <= issueDateInteger && endIssueDateInteger >= issueDateInteger)
+            sum += transactions[i].getValue();
     }
     return sum;
 }
@@ -72,15 +84,12 @@ void TransactionsManager::showTransactions(string startIssueDate, string endIssu
     int endIssueDateInteger = dateEditorEndIssueDate.getDateInteger();
 
     for (int i=0; i<transactions.size(); i++) {
-
-        transactions[i].showTransaction();
-
-        /*string issueDate = transactions[i].getIssueDate();
+        string issueDate = transactions[i].getIssueDate();
 
         DateEditor dateEditorIssueDate(issueDate);
         int issueDateInteger = dateEditorIssueDate.getDateInteger();
 
         if (startIssueDateInteger <= issueDateInteger && endIssueDateInteger >= issueDateInteger)
-            transactions[i].showTransaction();*/
+            transactions[i].showTransaction();
     }
 }
