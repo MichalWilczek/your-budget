@@ -17,12 +17,14 @@ class DateEditor {
     string day;
 
     void setCurrentDate();
+    void uploadDate(string date);
     void uploadDateFromConsole();
     bool isYearCorrect();
     bool isMonthCorrect();
     bool isDayCorrect();
     bool isLeapYear();
     int getNumberOfDaysInMonth();
+    void unifyDateElements();
 
 // Public interface.
 public:
@@ -32,11 +34,15 @@ public:
         else
             uploadDateFromConsole();
     }
-    /*DateEditor(string date="") {
-        // TODO: add logic converting the date into year, month, and day.
-    }*/
+    DateEditor(string date) {
+        uploadDate(date);
+    }
+
     int getDateInteger();
     string getDateString();
+    string getDateStringFirstDayOfMonth();
+    string getDateStringLastDayOfMonth();
+    string getDateStringFirstDayOfPreviousMonth();
 };
 
 #endif

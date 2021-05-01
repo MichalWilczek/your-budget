@@ -34,6 +34,33 @@ void Budget::addExpense() {
 	}
 }
 
+void Budget::showBalanceFromCurrentMonth() {
+    if (usersManager.isUserLoggedIn()) {
+		budgetManager->showBalanceFromCurrentMonth();
+	} else {
+		cout << "Log in first to show balance." << endl;
+		system("pause");
+	}
+}
+
+void Budget::showBalanceFromPreviousMonth() {
+   if (usersManager.isUserLoggedIn()) {
+		budgetManager->showBalanceFromPreviousMonth();
+	} else {
+		cout << "Log in first to show balance." << endl;
+		system("pause");
+	}
+}
+
+void Budget::showBalanceFromChosenPeriod() {
+   if (usersManager.isUserLoggedIn()) {
+		budgetManager->showBalanceFromChosenPeriod();
+	} else {
+		cout << "Log in first to show balance." << endl;
+		system("pause");
+	}
+}
+
 void Budget::changePasswordLoggedInUser() {
 	usersManager.changePasswordLoggedInUser();
 }
@@ -76,22 +103,19 @@ void Budget::runConsole() {
             case '2':
                 addExpense();
                 break;
-            /*case '3':
-                searchContactBySurname();
+            case '3':
+                showBalanceFromCurrentMonth();
                 break;
-            case '4':
-                showContactsOfLoggedInUser();
+           case '4':
+                showBalanceFromPreviousMonth();
                 break;
             case '5':
-                deleteContact();
-                break;
-            case '6':
-                editContact();
-                break;*/
-            case '7':
-                changePasswordLoggedInUser();
+                showBalanceFromChosenPeriod();
                 break;
             case '8':
+                changePasswordLoggedInUser();
+                break;
+            case '9':
                 logOutUser();
                 break;
             }
@@ -123,13 +147,12 @@ char Budget::chooseOptionUserMenu() {
     cout << "---------------------------" << endl;
    cout << "1. Add income" << endl;
     cout << "2. Add expense" << endl;
-    /* cout << "3. Search contact by surname" << endl;
-    cout << "4. Show contacts" << endl;
-    cout << "5. Delete contact" << endl;
-    cout << "6. Edit contact" << endl;
-    cout << "---------------------------" << endl;*/
-    cout << "7. Change password" << endl;
-    cout << "8. Log out" << endl;
+    cout << "3. Show balance from current month" << endl;
+    cout << "4. Show balance from previous month" << endl;
+    cout << "5. Show balance from chosen period" << endl;
+    cout << "---------------------------" << endl;
+    cout << "8. Change password" << endl;
+    cout << "9. Log out" << endl;
     cout << "---------------------------" << endl;
     cout << "Your choice: ";
     choice = Utils::readSign();
