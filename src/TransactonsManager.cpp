@@ -1,5 +1,18 @@
 #include "TransactonsManager.h"
 
+struct compareTransactionBasedOnIssueDate
+{
+    inline bool operator() (Transaction &transaction1, Transaction &transaction2)
+    {
+        string issueDate1 = transaction1.getIssueDate();
+        string issueDate2 = transaction2.getIssueDate();
+
+        DateEditor date1(issueDate1);
+        DateEditor date2(issueDate2);
+
+        return date1.getDateInteger() < date2.getDateInteger();
+    }
+};
 
 bool TransactionsManager::areTransactionsAvailable() {
     if (transactions.size() > 0)
@@ -72,10 +85,7 @@ void TransactionsManager::addTransaction() {
 
 void TransactionsManager::showTransactions(string startIssueDate, string endIssueDate) {
 
-    /*sort( values.begin( ), values.end( ), [ ]( const MyStruct& lhs, const MyStruct& rhs )
-    {
-       return lhs.key < rhs.key;
-    }*/
+    vector <Transaction> filteredTransactions;
 
     DateEditor dateEditorStartIssueDate(startIssueDate);
     DateEditor dateEditorEndIssueDate(endIssueDate);
@@ -90,6 +100,11 @@ void TransactionsManager::showTransactions(string startIssueDate, string endIssu
         int issueDateInteger = dateEditorIssueDate.getDateInteger();
 
         if (startIssueDateInteger <= issueDateInteger && endIssueDateInteger >= issueDateInteger)
-            transactions[i].showTransaction();
+            filteredTransactions.push_back(transactions[i]);
+    }
+
+    sort(filteredTransactions.begin(), filteredTransactions.end(), compareTransactionBasedOnIssueDate());
+    for (int i=0; i<filteredTransactions.size(); i++) {
+        filteredTransactions[i].showTransaction();
     }
 }

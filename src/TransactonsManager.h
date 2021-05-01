@@ -15,6 +15,7 @@ class TransactionsManager {
 	const int ID_USER_LOGGED_IN;
 	vector <Transaction> transactions;
 	FileTransactionsXML fileTransactions;
+	//bool compareTransactionBasedOnIssueDate(Transaction transaction1, Transaction transaction2);
 
 public:
 	TransactionsManager(string filenameTransactions, int idUserLoggedIn):
