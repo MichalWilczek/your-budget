@@ -24,6 +24,7 @@ class DateEditor {
     bool isDayCorrect();
     bool isLeapYear();
     int getNumberOfDaysInMonth();
+    void unifyDateElements();
 
 // Public interface.
 public:

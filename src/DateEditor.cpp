@@ -23,8 +23,8 @@ void DateEditor::setCurrentDate() {
     year = Utils::convertIntIntoString(yearInteger);
     month = Utils::convertIntIntoString(monthInteger);
     day = Utils::convertIntIntoString(dayInteger);
-    if (month.length() == 1) month = "0" + month;
-    if (month.length() != 2)  throw invalid_argument("Month should consist of two two digits.");
+
+    unifyDateElements();
 }
 
 void DateEditor::uploadDate(string date) {
@@ -45,6 +45,8 @@ void DateEditor::uploadDate(string date) {
 
     if (!isDayCorrect())
         throw invalid_argument(day);
+
+    unifyDateElements();
 }
 
 string DateEditor::getDateStringFirstDayOfMonth() {
@@ -94,6 +96,7 @@ void DateEditor::uploadDateFromConsole() {
 
         break;
     }
+    unifyDateElements();
 }
 
 bool DateEditor::isYearCorrect() {
@@ -114,11 +117,6 @@ bool DateEditor::isYearCorrect() {
 
     if (!isYearCorrect)
         return isYearCorrect;
-
-    // Add zeros to the year if it has less than 4 digits.
-    for (int i=yearLength; i<4; i++) {
-        year = "0" + year;
-    }
 
     return isYearCorrect;
 }
@@ -201,4 +199,18 @@ int DateEditor::getNumberOfDaysInMonth() {
             break;
     }
     return days;
+}
+
+void DateEditor::unifyDateElements() {
+
+    // Add zeros to the year if it has less than 4 digits.
+    for (int i=year.length(); i<4; i++) {
+        year = "0" + year;
+    }
+
+    // Add zeros to the month and the day if needed.
+    if (month.length() == 1) month = "0" + month;
+    if (month.length() != 2)  throw invalid_argument("Month " + month + " should consist of two two digits.");
+    if (day.length() == 1) day = "0" + day;
+    if (day.length() != 2)  throw invalid_argument("Day: " + day + " should consist of two two digits.");
 }

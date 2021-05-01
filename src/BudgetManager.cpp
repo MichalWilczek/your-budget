@@ -40,7 +40,7 @@ void BudgetManager::showBalanceFromCurrentMonth() {
 
     cout << endl << "---------------------" << endl;
     cout << "Total income = " << totalIncome << endl;
-    cout << "Total expenses = " << totalIncome << endl;
+    cout << "Total expenses = " << totalExpenses << endl;
     cout << "---------------------" << endl;
     cout << "Total balance = " << totalIncome - totalExpenses << endl << endl;
 
