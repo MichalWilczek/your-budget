@@ -2,6 +2,7 @@
 #define TRANSACTION_H
 
 #include <iostream>
+#include <cmath>
 #include "Utils.h"
 
 using namespace std;
@@ -16,11 +17,11 @@ class Transaction {
 
 public:
 	Transaction(int idUser=0, int idTransaction=0, double value=0, string name="", string issueDate="2000-01-01") {
-		this->idUser = idUser;
-		this->idTransaction = idTransaction;
-		this->value = value;
-		this->name = name;
-		this->issueDate = issueDate;
+		setIdUser(idUser);
+		setIdTransaction(idTransaction);
+		setValue(value);
+		setName(name);
+		setIssueDate(issueDate);
 	}
 
 	// Container setters.

@@ -12,9 +12,11 @@ void Transaction::setIdTransaction(int newIdTransaction) {
 }
 
 void Transaction::setValue(double newValue) {
-    if (newValue > 0)
-		// TODO: round value with two decimal digits.
-		value = newValue;
+	double roundedNewValue;
+
+    if (newValue >= 0)
+		roundedNewValue = round(100 * newValue) / 100;
+		value = roundedNewValue;
 }
 
 void Transaction::setName(string newName) {
