@@ -5,8 +5,6 @@
 #include <vector>
 #include <fstream>
 
-#include "User.h"
-
 using namespace std;
 
 class File {

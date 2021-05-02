@@ -15,11 +15,11 @@ class User {
 
 public:
 	Contact(int idUser=0, string firstName="", string surname="", string login="", string password="") {
-		this->idUser = idUser;
-		this->firstName = Utils::convertFirstLetterIntoCapitalOtherIntoLowercase(firstName);
-		this->surname = Utils::convertFirstLetterIntoCapitalOtherIntoLowercase(surname);
-		this->login = login;
-		this->password = password;
+		setIdUser(idUser);
+		setFirstName(firstName);
+		setSurname(surname);
+		setLogin(login);
+		setPassword(password);
 	}
 
 	//Container setters.

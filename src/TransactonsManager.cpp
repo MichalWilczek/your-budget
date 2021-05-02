@@ -21,13 +21,15 @@ bool TransactionsManager::areTransactionsAvailable() {
 }
 
 double TransactionsManager::getTransactionsSummedValue(string startIssueDate, string endIssueDate) {
-    double sum=0;
+
+    // Set dates in the proper integer format.
     DateEditor dateEditorStartIssueDate(startIssueDate);
     DateEditor dateEditorEndIssueDate(endIssueDate);
-
     int startIssueDateInteger = dateEditorStartIssueDate.getDateInteger();
     int endIssueDateInteger = dateEditorEndIssueDate.getDateInteger();
 
+    // Sum the specified transactions,
+    double sum=0;
     for (int i=0; i<transactions.size(); i++) {
         string issueDate = transactions[i].getIssueDate();
 
@@ -85,14 +87,14 @@ void TransactionsManager::addTransaction() {
 
 void TransactionsManager::showTransactions(string startIssueDate, string endIssueDate) {
 
-    vector <Transaction> filteredTransactions;
-
+    // Set dates in the proper integer format.
     DateEditor dateEditorStartIssueDate(startIssueDate);
     DateEditor dateEditorEndIssueDate(endIssueDate);
-
     int startIssueDateInteger = dateEditorStartIssueDate.getDateInteger();
     int endIssueDateInteger = dateEditorEndIssueDate.getDateInteger();
 
+    // Filter out transactions that do not correspond to the issue date criteria.
+    vector <Transaction> filteredTransactions;
     for (int i=0; i<transactions.size(); i++) {
         string issueDate = transactions[i].getIssueDate();
 
@@ -103,6 +105,7 @@ void TransactionsManager::showTransactions(string startIssueDate, string endIssu
             filteredTransactions.push_back(transactions[i]);
     }
 
+    // Sort the filtered transactions with respect to their issue dates.
     sort(filteredTransactions.begin(), filteredTransactions.end(), compareTransactionBasedOnIssueDate());
     for (int i=0; i<filteredTransactions.size(); i++) {
         filteredTransactions[i].showTransaction();

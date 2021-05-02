@@ -28,6 +28,7 @@ void BudgetManager::showBalance(string startDate, string endDate) {
 
 void BudgetManager::addIncome() {
     system("cls");
+
     cout << " >>> ADDING INCOME <<<" << endl << endl;
     incomeManager.addTransaction();
     cout << endl << "Income added." << endl << endl;
@@ -36,6 +37,7 @@ void BudgetManager::addIncome() {
 
 void BudgetManager::addExpense() {
     system("cls");
+
     cout << " >>> ADDING EXPENSE <<<" << endl << endl;
     expensesManager.addTransaction();
     cout <<  endl << "Expense added." << endl << endl;
