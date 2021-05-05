@@ -31,7 +31,6 @@ void BudgetManager::addIncome() {
 
     cout << " >>> ADDING INCOME <<<" << endl << endl;
     incomeManager.addTransaction();
-    cout << endl << "Income added." << endl << endl;
     system("pause");
 }
 
@@ -40,7 +39,6 @@ void BudgetManager::addExpense() {
 
     cout << " >>> ADDING EXPENSE <<<" << endl << endl;
     expensesManager.addTransaction();
-    cout <<  endl << "Expense added." << endl << endl;
     system("pause");
 }
 

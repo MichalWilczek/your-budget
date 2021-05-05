@@ -44,14 +44,21 @@ double TransactionsManager::getTransactionsSummedValue(string startIssueDate, st
 
 void TransactionsManager::addTransaction() {
 
+    double value = 0;
+
     // Upload the transaction data.
     int idTransaction = fileTransactions.getIdTransactionLastInFile();
     int newIdTransaction = idTransaction + 1;
 
-    cout << "Give value: ";
-    string valueString = Utils::readLine();
-    valueString = Utils::convertCommasToDots(valueString);
-    double value = Utils::convertStringIntoDouble(valueString);
+    try {
+        cout << "Give value: ";
+        string valueString = Utils::readLine();
+        valueString = Utils::convertCommasToDots(valueString);
+        value = Utils::convertStringIntoDouble(valueString);
+    } catch (invalid_argument) {
+        cout << "Input cannot be converted into a number." << endl << endl;
+        return;
+    }
 
     cout << "Give name: ";
     string name = Utils::readLine();
@@ -83,6 +90,7 @@ void TransactionsManager::addTransaction() {
     Transaction transaction(ID_USER_LOGGED_IN, newIdTransaction, value, name, issueDate);
     transactions.push_back(transaction);
     fileTransactions.addTransactionToFile(transaction);
+    cout << endl << "Transaction saved." << endl << endl;
 }
 
 void TransactionsManager::showTransactions(string startIssueDate, string endIssueDate) {
