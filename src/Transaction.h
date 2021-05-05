@@ -40,6 +40,11 @@ public:
 
 	// Other container methods.
 	void showTransaction();
+
+	// Sorting operators.
+	bool operator< (const Transaction &other) const {
+        return issueDate < other.issueDate;
+	}
 };
 
 #endif

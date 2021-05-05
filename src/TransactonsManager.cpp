@@ -1,19 +1,5 @@
 #include "TransactonsManager.h"
 
-struct compareTransactionBasedOnIssueDate
-{
-    inline bool operator() (Transaction &transaction1, Transaction &transaction2)
-    {
-        string issueDate1 = transaction1.getIssueDate();
-        string issueDate2 = transaction2.getIssueDate();
-
-        DateEditor date1(issueDate1);
-        DateEditor date2(issueDate2);
-
-        return date1.getDateInteger() < date2.getDateInteger();
-    }
-};
-
 bool TransactionsManager::areTransactionsAvailable() {
     if (transactions.size() > 0)
         return true;
@@ -44,23 +30,31 @@ double TransactionsManager::getTransactionsSummedValue(string startIssueDate, st
 
 void TransactionsManager::addTransaction() {
 
+    double value = 0;
+
     // Upload the transaction data.
     int idTransaction = fileTransactions.getIdTransactionLastInFile();
     int newIdTransaction = idTransaction + 1;
 
-    cout << "Give value: ";
-    string valueString = Utils::readLine();
-    valueString = Utils::convertCommasToDots(valueString);
-    double value = Utils::convertStringIntoDouble(valueString);
+    try {
+        cout << "Give value: ";
+        string valueString = Utils::readLine();
+        valueString = Utils::convertCommasToDots(valueString);
+        value = Utils::convertStringIntoDouble(valueString);
+    } catch (invalid_argument) {
+        cout << "Input cannot be converted into a number." << endl << endl;
+        return;
+    }
 
     cout << "Give name: ";
     string name = Utils::readLine();
 
-    cout << "Issue date. Do you want to assign the current date to the transaction? Press 'y' to confirm and 'n' to decline: ";
     bool currentDate;
     bool continueLoop = true;
-    char sign = Utils::readSign();
+    char sign;
     while (continueLoop) {
+        cout << "Issue date. Do you want to assign the current date to the transaction? Press 'y' to confirm and 'n' to decline: ";
+        sign = Utils::readSign();
         switch (sign) {
             case 'y':
                 currentDate = true;
@@ -71,8 +65,7 @@ void TransactionsManager::addTransaction() {
                 continueLoop = false;
                 break;
             default:
-                cout << "The sign does not correspond to any of the available options.";
-                system("pause");
+                cout << "The sign does not correspond to any of the available options." << endl << endl;
                 break;
         }
     }
@@ -83,6 +76,7 @@ void TransactionsManager::addTransaction() {
     Transaction transaction(ID_USER_LOGGED_IN, newIdTransaction, value, name, issueDate);
     transactions.push_back(transaction);
     fileTransactions.addTransactionToFile(transaction);
+    cout << endl << "Transaction saved." << endl << endl;
 }
 
 void TransactionsManager::showTransactions(string startIssueDate, string endIssueDate) {
@@ -106,7 +100,7 @@ void TransactionsManager::showTransactions(string startIssueDate, string endIssu
     }
 
     // Sort the filtered transactions with respect to their issue dates.
-    sort(filteredTransactions.begin(), filteredTransactions.end(), compareTransactionBasedOnIssueDate());
+    sort(filteredTransactions.begin(), filteredTransactions.end());
     for (int i=0; i<filteredTransactions.size(); i++) {
         filteredTransactions[i].showTransaction();
     }
