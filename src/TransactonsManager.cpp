@@ -1,19 +1,5 @@
 #include "TransactonsManager.h"
 
-struct compareTransactionBasedOnIssueDate
-{
-    inline bool operator() (Transaction &transaction1, Transaction &transaction2)
-    {
-        string issueDate1 = transaction1.getIssueDate();
-        string issueDate2 = transaction2.getIssueDate();
-
-        DateEditor date1(issueDate1);
-        DateEditor date2(issueDate2);
-
-        return date1.getDateInteger() < date2.getDateInteger();
-    }
-};
-
 bool TransactionsManager::areTransactionsAvailable() {
     if (transactions.size() > 0)
         return true;
@@ -63,11 +49,12 @@ void TransactionsManager::addTransaction() {
     cout << "Give name: ";
     string name = Utils::readLine();
 
-    cout << "Issue date. Do you want to assign the current date to the transaction? Press 'y' to confirm and 'n' to decline: ";
     bool currentDate;
     bool continueLoop = true;
-    char sign = Utils::readSign();
+    char sign;
     while (continueLoop) {
+        cout << "Issue date. Do you want to assign the current date to the transaction? Press 'y' to confirm and 'n' to decline: ";
+        sign = Utils::readSign();
         switch (sign) {
             case 'y':
                 currentDate = true;
@@ -78,8 +65,7 @@ void TransactionsManager::addTransaction() {
                 continueLoop = false;
                 break;
             default:
-                cout << "The sign does not correspond to any of the available options.";
-                system("pause");
+                cout << "The sign does not correspond to any of the available options." << endl << endl;
                 break;
         }
     }
@@ -114,7 +100,7 @@ void TransactionsManager::showTransactions(string startIssueDate, string endIssu
     }
 
     // Sort the filtered transactions with respect to their issue dates.
-    sort(filteredTransactions.begin(), filteredTransactions.end(), compareTransactionBasedOnIssueDate());
+    sort(filteredTransactions.begin(), filteredTransactions.end());
     for (int i=0; i<filteredTransactions.size(); i++) {
         filteredTransactions[i].showTransaction();
     }
