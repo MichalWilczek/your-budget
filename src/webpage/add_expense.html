@@ -10,12 +10,9 @@
 	<link rel="stylesheet" href="style.css" type="text/css" />
 	<script type="text/javascript" src="functions.js"></script>
 </head>
-
 <body>
-
 	<div id="container">
-		<form>
-			
+		<form>	
 			<input type="text" placeholder="amount" onfocus="this.placeholder='amount'" onblur="this.placeholder='amount'">
 			<input type="date">
 			<select name="payment-method" id="payment-method-select">
@@ -24,7 +21,7 @@
 				<option value="debit-card">debit card</option>
 				<option value="credit-card">credit card</option>
 			</select>
-			<select name="category" id="category-select">
+			<select name="category" id="expense-category-select">
 				<option value="">category</option>
 				<option value="appartment">appartment</option>
 				<option value="books">books</option>
@@ -46,11 +43,9 @@
 				<option value="other">other</option>
 			</select>
 			<input type="text" placeholder="optional comment" onfocus="this.placeholder='optional comment'" onblur="this.placeholder='optional comment'">
-			<input type="submit" value="Add">
-						
+			<input type="submit" value="Add">			
 		</form>
 		<a href="main_menu.html"><button type="cancel">Cancel</button></a>
 	</div>
-	
 </body>
 </html>
