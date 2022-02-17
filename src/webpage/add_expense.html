@@ -1,0 +1,56 @@
+<!DOCTYPE HTML>
+<html lang="en">
+<head>
+	<meta charset="utf-8" />
+	<title>Add Expense</title>
+	<meta name="description" content="add expense" />
+	<meta name="keywords" content="css, add expense" />
+	<meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1" />
+		
+	<link rel="stylesheet" href="style.css" type="text/css" />
+	<script type="text/javascript" src="functions.js"></script>
+</head>
+
+<body>
+
+	<div id="container">
+		<form>
+			
+			<input type="text" placeholder="amount" onfocus="this.placeholder='amount'" onblur="this.placeholder='amount'">
+			<input type="date">
+			<select name="payment-method" id="payment-method-select">
+				<option value="">payment method</option>
+				<option value="cash">cash</option>
+				<option value="debit-card">debit card</option>
+				<option value="credit-card">credit card</option>
+			</select>
+			<select name="category" id="category-select">
+				<option value="">category</option>
+				<option value="appartment">appartment</option>
+				<option value="books">books</option>
+				<option value="children">children</option>
+				<option value="clothes">clothes</option>
+				<option value="debts">debts</option>
+				<option value="donation">donation</option>
+				<option value="entertainment">entertainment</option>
+				<option value="food">food</option>
+				<option value="healthcare">healthcare</option>
+				<option value="internet">internet</option>
+				<option value="phone">phone</option>
+				<option value="savings">savings</option>
+				<option value="training">training</option>
+				<option value="transport">transport</option>
+				<option value="travel">travel</option>
+				<option value="tv">tv</option>
+				<option value="retirement">retirement</option>
+				<option value="other">other</option>
+			</select>
+			<input type="text" placeholder="optional comment" onfocus="this.placeholder='optional comment'" onblur="this.placeholder='optional comment'">
+			<input type="submit" value="Add">
+						
+		</form>
+		<a href="main_menu.html"><button type="cancel">Cancel</button></a>
+	</div>
+	
+</body>
+</html>

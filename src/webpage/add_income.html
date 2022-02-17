@@ -1,0 +1,36 @@
+<!DOCTYPE HTML>
+<html lang="en">
+<head>
+	<meta charset="utf-8" />
+	<title>Add Income</title>
+	<meta name="description" content="add income" />
+	<meta name="keywords" content="css, add income" />
+	<meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1" />
+		
+	<link rel="stylesheet" href="style.css" type="text/css" />
+		
+</head>
+
+<body>
+
+	<div id="container">
+		<form>
+			
+			<input type="text" placeholder="amount" onfocus="this.placeholder='amount'" onblur="this.placeholder='amount'">
+			<input type="date">
+			<select name="category" id="category-select">
+				<option value="">category</option>
+				<option value="pay">pay</option>
+				<option value="bank-interest">bank interest</option>
+				<option value="other">other</option>
+			</select>
+			<input type="text" placeholder="comment (optional)" onfocus="this.placeholder='comment (optional)'" onblur="this.placeholder='comment (optional)'">
+
+			<input type="submit" value="Add">			
+		</form>
+		
+		<a href="main_menu.html"><button type="cancel">Cancel</button></a>
+	</div>
+	
+</body>
+</html>
