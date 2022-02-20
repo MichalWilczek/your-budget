@@ -4,6 +4,13 @@ body
 	font-size: 20px;
 }
 
+.logo
+{
+	margin-left: auto;
+	margin-right: auto;
+	margin-bottom: 10px;
+}
+
 #container
 {
 	background-color: white;
@@ -24,9 +31,9 @@ button
 	width: 300px;
 	font-size: 20px;
 	font-family: Helvetica, sans-serif;
-	color: #696969;
+	color: #5F4558;
 	padding: 5px;
-	border: 2px solid #DCDCDC;
+	border: 2px solid #E6E6FA;
 	border-radius: 5px;
 	box-sizing: border-box;
 	border-radius: 5px;
@@ -37,7 +44,7 @@ input:focus,
 select:focus
 {
 	outline: none;
-	border: 2px solid #C0C0C0;
+	border: 2px solid #CAB2CA;
 }
 
 input[type=submit],
@@ -46,19 +53,31 @@ button
 	margin-top: 7px;
 	letter-spacing: 2px;
 	border: none;
-	background-color: #DCDCDC;
+	background-color: #E6E6FA;
 	cursor: pointer;
 }
 
 input[type=submit]:hover,
 button:hover
 {
-	background-color: #C0C0C0;
+	background-color: #CAB2CA;
 }
 
 input[type=submit]:focus,
 button:focus
 {
-	background-color: #A9A9A9;
+	background-color: #B095B0;
 }
 
+::placeholder { /* Chrome, Firefox, Opera, Safari 10.1+ */
+  color: #5F4558;
+  opacity: 1; /* Firefox */
+}
+
+:-ms-input-placeholder { /* Internet Explorer 10-11 */
+  color: #5F4558;
+}
+
+::-ms-input-placeholder { /* Microsoft Edge */
+  color: #5F4558;
+}
