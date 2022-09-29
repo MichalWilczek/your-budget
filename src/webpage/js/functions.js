@@ -18,10 +18,10 @@ class Options {
 		}
 	}
 	removeOption(optionName) {
-		
+
 	}
 	changeOptionName(optionName, newOptionName) {
-		
+
 	}
 	showOptions(elementID) {
 		var optionsToShow = '<option value="'+ this.id +'" disabled selected>'+ this.id +'</option>';
@@ -44,7 +44,6 @@ function runAddExpense() {
 	expenseOptions.showOptions("expense-category-select")
 }
 
-
 /*
 MAIN SCRIPT
 */
@@ -56,12 +55,12 @@ let paymentOptions = new Options(
 	["cash", "credit card", "debit card"]
 );
 let expenseOptions = new Options(
-	"category", 
+	"category",
 	[
-	"appartment", "books", "children", "clothes", 
-	"debts", "donation", "entertainment", "food", 
-	"healthcare", "internet", "phone", "savings", 
-	"training", "transport", "travel", "tv", 
+	"appartment", "books", "children", "clothes",
+	"debts", "donation", "entertainment", "food",
+	"healthcare", "internet", "phone", "savings",
+	"training", "transport", "travel", "tv",
 	"retirement"
 	]
 );
