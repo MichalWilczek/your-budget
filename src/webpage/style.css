@@ -25,8 +25,7 @@ body
 }
 
 input,
-select,
-button
+select
 {
 	width: 300px;
 	font-size: 20px;
@@ -48,7 +47,7 @@ select:focus
 }
 
 input[type=submit],
-button
+input[type=button]
 {
 	margin-top: 7px;
 	letter-spacing: 2px;
@@ -58,13 +57,13 @@ button
 }
 
 input[type=submit]:hover,
-button:hover
+input[type=button]:hover
 {
 	background-color: #CAB2CA;
 }
 
 input[type=submit]:focus,
-button:focus
+input[type=button]:focus
 {
 	background-color: #B095B0;
 }

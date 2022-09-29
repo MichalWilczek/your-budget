@@ -1,26 +1,28 @@
 <!DOCTYPE HTML>
 <html lang="en">
 <head>
-	<meta charset="utf-8" />
+	<meta charset="utf-8">
 	<title>Add Expense</title>
-	<meta name="description" content="add expense" />
-	<meta name="keywords" content="css, add expense" />
-	<meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1" />
-		
-	<link rel="stylesheet" href="style.css" type="text/css" />
-	<script type="text/javascript" src="functions.js"></script>
+	<meta name="description" content="add expense">
+	<meta name="keywords" content="css, add expense">
+	<meta http-equiv="X-UA-Compatible" content="IE=edge">
+
+	<link rel="stylesheet" href="style.css" type="text/css">
+	<script src="functions.js"></script>
 </head>
 <body onload="runAddExpense(); ">
 	<div id="container">
-		<form>	
+		<form>
 			<input type="text" placeholder="amount" onfocus="this.placeholder='amount'" onblur="this.placeholder='amount'">
 			<input type="date">
 			<select name="payment-method" id="payment-option-select"></select>
 			<select name="category" id="expense-category-select"></select>
 			<input type="text" placeholder="optional comment" onfocus="this.placeholder='optional comment'" onblur="this.placeholder='optional comment'">
-			<input type="submit" value="Add">			
+			<input type="submit" value="Add">
 		</form>
-		<a href="main_menu.html"><button type="cancel">Cancel</button></a>
+		<form action="main_menu.html">
+			<input type="submit" value="Cancel">
+		</form>
 	</div>
 </body>
 </html>
