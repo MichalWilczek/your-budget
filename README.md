@@ -1,2 +1,2 @@
 # your-budget
-This application allows you to get your finances under control by controlling your monthly income and expenses.
+This backend application in C++ allows you to get your finances under control by monitoring your monthly income and expenses.
